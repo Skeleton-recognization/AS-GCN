@@ -39,7 +39,7 @@ base_lr1: 0.1
 base_lr2: 0.0005
 step: [40, 70, 90]
 
-device: [0,1,2,3]
+device: [0]
 batch_size: 32
 test_batch_size: 32
 start_epoch: 0

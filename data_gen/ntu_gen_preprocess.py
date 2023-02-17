@@ -3,8 +3,7 @@ import pickle
 from tqdm import tqdm
 import sys
 
-sys.path.extend(['../'])
-from data_gen.preprocess import pre_normalization
+from preprocess import pre_normalization
 
 training_subjects = [1, 2, 4, 5, 8, 9, 13, 14, 15, 16, 17, 18, 19, 25, 27, 28, 31, 34, 35, 38]
 training_cameras = [2, 3]
@@ -126,9 +125,9 @@ def gendata(data_path, out_path, ignored_sample_path=None, benchmark='xsub', set
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='NTU-RGB-D Data Converter.')
-    parser.add_argument('--data_path', default='../data/NTU-RGB+D/nturgb+d_skeletons/')
-    parser.add_argument('--ignored_sample_path', default='../data/NTU-RGB+D/samples_with_missing_skeletons.txt')
-    parser.add_argument('--out_folder', default='../data/nturgb_d/')
+    parser.add_argument('--data_path', default='/home/zzf/dataset/Raw_Skeleton_S01-S17/skeleton+D0-56880/')
+    parser.add_argument('--ignored_sample_path', default='/home/zzf/csy/AS-GCN/data/NTU-RGB+D/samples_with_missing_skeletons.txt')
+    parser.add_argument('--out_folder', default='/home/zzf/csy/AS-GCN/data/nturgb_d/')
 
     benchmark = ['xsub', 'xview']
     set_name = ['train', 'val']
@@ -140,4 +139,4 @@ if __name__ == '__main__':
             if not os.path.exists(out_path):
                 os.makedirs(out_path)
             print(b, sn)
-            gendata(arg.data_path, out_path, arg.ignored_sample_path, benchmark=b, part=sn)
+            gendata(arg.data_path, out_path, arg.ignored_sample_path, benchmark=b, set_name=sn)
